@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singly Linked List Operations </title>
+
+<style>
+/* Table Styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#222;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Content Box */
+.result {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-left: 4px solid #2196F3;
+}
+
+.hidden {
+    display: none;
+}
+
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Singly Linked List Operations</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Operation</th>
+            <th>Algorithm (Text / Code)</th>
+            <th>Time Complexity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <!-- Traversal -->
+        <tr>
+            <td><b>Traversal</b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>void display() {
+    struct Node *temp = head;
+
+    while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL");
+}</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Start from head<br>
+                    2. Print node data<br>
+                    3. Move to next node<br>
+                    4. Repeat until NULL<br>
+                    5. Stop
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+
+        <!-- Insertion at Beginning -->
+        <tr>
+            <td><b>Insertion (Beginning)</b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>void insertBeginning(int data)
+{
+    struct Node *newNode =
+        (struct Node*)malloc(sizeof(struct Node));
+
+    newNode->data = data;
+    newNode->next = head;
+    head = newNode;
+}</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Create a new node<br>
+                    2. Insert data into the node<br>
+                    3. Set newNode->next = head<br>
+                    4. Update head = newNode<br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+        
+                <!-- Insertion at End -->
+        <tr>
+            <td><b>Insertion (End)</b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>void insertEnd(int data)
+{
+    struct Node *newNode =
+        (struct Node*)malloc(sizeof(struct Node));
+
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if(head == NULL)
+    {
+        head = newNode;
+        return;
+    }
+
+    struct Node *temp = head;
+
+    while(temp->next != NULL)
+        temp = temp->next;
+
+    temp->next = newNode;
+}</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Create a new node<br>
+                    2. Set newNode->next = NULL <br>
+                    3. If list is empty, make it head<br>
+                    4. Traverse to last node<br>
+                    5. Link last node to new node<br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+
+
+
+                <!-- Insertion at Specific Position -->
+        <tr>
+            <td><b>Insertion (At Specific Position)</b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>void insertPosition(int data, int pos)
+{
+    struct Node *newNode =
+        (struct Node*)malloc(sizeof(struct Node));
+
+    newNode->data = data;
+
+    struct Node *temp = head;
+
+    for(int i=1; i < pos-1 ;i++)
+        temp = temp->next;
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+}</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Create a new node<br>
+                    2. Traverse to position-1 <br>
+                    3. Set newNode->next = temp->next <br>
+                    4. Set temp->next = newNode <br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+        
+        
+
+        <!-- Deletion at Beginning -->
+        <tr>
+            <td><b>Deletion (Beginning)</b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>temp = head;
+head = head->next;
+free(temp);</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Store head in temp.<br>
+                    2. Move head to next node.<br>
+                    3. Delete old head node.
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+
+    </tbody>
+</table>
+
+<script>
+function toggleAlgorithm(checkbox) {
+
+    const parentCell = checkbox.closest("td");
+
+    const codeBox = parentCell.querySelector(".codeBox");
+    const textBox = parentCell.querySelector(".textBox");
+
+    if (checkbox.checked) {
+        codeBox.classList.add("hidden");
+        textBox.classList.remove("hidden");
+    } else {
+        codeBox.classList.remove("hidden");
+        textBox.classList.add("hidden");
+    }
+}
+</script>
+
+</body>
+</html>
