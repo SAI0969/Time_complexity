@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>AlgoInsight - Algorithms & Time Complexity</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fa;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#222;
+}
+
+.section-title{
+    margin-top:40px;
+    margin-bottom:20px;
+    padding:10px;
+    background:#1e293b;
+    color:white;
+    border-radius:8px;
+    text-align:center;
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.column{
+    flex:1 1 250px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+    height:100%;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card a{
+    text-decoration:none;
+    color:#2563eb;
+}
+
+.card p{
+    margin-top:8px;
+    color:#555;
+    line-height:1.5;
+}
+
+@media(max-width:768px){
+
+    .row{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Algorithms and Their Time Complexity</h1>
+
+<!-- LINKED LISTS -->
+
+<h2 class="section-title">Linked Lists</h2>
+
+<div class="row">
+
+<div class="column">
+<div class="card">
+<h3><a href="Singly_Linked_Lists.html" target = "block">Singly Linked List</a></h3>
+<p><b>Operations:</b></p>
+<p>Traversal, Insertion, Deletion, Searching, Updating, Reversing, Counting Nodes</p>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Doubly_Linked_Lists.html" target = "block">Doubly Linked List</a></h3>
+<p><b>Operations:</b></p>
+<p>Traversal, Insertion, Deletion, Searching, Updating, Reversing, Counting Nodes</p>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Circularly_Linked_Lists.html" target = "block">Circular Linked List</a></h3>
+<p><b>Operations:</b></p>
+<p>Traversal, Insertion, Deletion, Searching, Updating, Counting Nodes</p>
+</div>
+</div>
+
+</div>
+
+<!-- STACK & QUEUE -->
+
+<h2 class="section-title">Stack & Queue</h2>
+
+<div class="row">
+
+<div class="column">
+<div class="card">
+<h3><a href="Stack.html" target = "block">Stack</a></h3>
+<p><b>Operations:</b></p>
+<p>Push, Pop, Peek, IsEmpty, IsFull</p>
+<p><b>Applications:</b> String Reversal</p>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Queue.html" target = "block">Queue</a></h3>
+<p><b>Operations:</b></p>
+<p>Enqueue, Dequeue, Front, Rear, Size</p>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Infix.html" target = "block" >Infix → Postfix</a></h3>
+<p>Convert Infix Expressions into Postfix Form</p>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Postfix.html" target = "block" >Postfix Evaluation</a></h3>
+<p>Evaluate Postfix Expressions using Stack</p>
+</div>
+</div>
+
+</div>
+
+<!-- TREES -->
+
+<h2 class="section-title">Trees</h2>
+
+<div class="row">
+
+<div class="column">
+<div class="card">
+<h3><a href="Binary_Tree.html" target = "block" >Binary Tree</a></h3>
+<p><b>Operations:</b></p>
+<p>Inorder, Preorder, Postorder, Insertion, Search, Delete, Min, Max</p>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Binary_Search_Tree.html" target = "block" >Binary Search Tree</a></h3>
+<p><b>Operations:</b></p>
+<p>Insertion, Searching, Deletion, Inorder, Preorder, Postorder</p>
+</div>
+</div>
+
+</div>
+
+<!-- GRAPHS -->
+
+<h2 class="section-title">Graphs</h2>
+
+<div class="row">
+
+<div class="column">
+<div class="card">
+<h3><a href="Graphs.html" target = "block" >Graphs</a></h3>
+<p><b>Algorithms:</b></p>
+<p>DFS, BFS, Dijkstra's Shortest Path</p>
+</div>
+</div>
+
+</div>
+
+<!-- SEARCHING -->
+
+<h2 class="section-title">Searching</h2>
+
+<div class="row">
+
+<div class="column">
+<div class="card">
+<h3><a href="Linear_Search.html" target = "block" >Linear Search</a></h3>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Binary_Search.html" target = "block" >Binary Search</a></h3>
+</div>
+</div>
+
+</div>
+
+<!-- SORTING -->
+
+<h2 class="section-title">Sorting</h2>
+
+<div class="row">
+
+<div class="column">
+<div class="card">
+<h3><a href="Insertion_Sort.html" target = "block" >Insertion Sort</a></h3>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Quick_Sort.html" target = "block" >Quick Sort</a></h3>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Merge_Sort.html" target = "block">Merge Sort</a></h3>
+</div>
+</div>
+
+<div class="column">
+<div class="card">
+<h3><a href="Heap_Sort.html" target = "block" >Heap Sort</a></h3>
+</div>
+</div>
+
+</div>
+
+
+<h2 class="section-title">Hashing</h2>
+
+<div class="row">
+
+<div class="column">
+<div class="card">
+<h3><a href="Hashtable.html" target = "block">Hash Table</a></h3>
+<p>Open Hashing and Closed Hashing Operations</p>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
