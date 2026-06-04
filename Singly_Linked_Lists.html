@@ -14,6 +14,81 @@ table {
     font-family: Arial, sans-serif;
 }
 
+#searchBox {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 16px;
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+}
+
+#searchBox:focus {
+    outline: none;
+    box-shadow: 0 0 5px #2196F3;
+}
+/* Mobile Friendly Table */
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Better Code Display */
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    max-width: 100%;
+    font-size: 14px;
+}
+
+/* Content Boxes */
+.result {
+    overflow-x: auto;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .switch {
+        width: 40px;
+        height: 20px;
+    }
+
+    .slider:before {
+        height: 14px;
+        width: 14px;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(20px);
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+    pre {
+        font-size: 12px;
+    }
+}
+
+
 h2{
     text-align:center;
     margin-bottom:30px;
@@ -99,6 +174,16 @@ pre {
 <body>
 
 <h2>Singly Linked List Operations</h2>
+
+
+<input
+    type="text"
+    id="searchBox"
+    placeholder="Search operation..."
+    onkeyup="searchOperation()"
+>
+
+
 
 <table>
     <thead>
@@ -294,7 +379,7 @@ pre {
 
         <!-- Deletion at Beginning -->
         <tr>
-            <td><b>Deletion (Beginning)</b></td>
+            <td><b>Deletion (At Beginning)</b></td>
 
             <td>
 
@@ -306,16 +391,25 @@ pre {
                 </label>
 
                 <div class="result codeBox">
-<pre><b>temp = head;
-head = head->next;
-free(temp);</b></pre>
+<pre><b>
+  void deleteBeginning()
+{
+    if(head == NULL)
+        return;
+
+    struct Node *temp = head;
+    head = head->next;
+
+    free(temp);
+}
+</b></pre>
                 </div>
 
                 <div class="result textBox hidden">
                     <b>
-                    1. Store head in temp.<br>
-                    2. Move head to next node.<br>
-                    3. Delete old head node.
+                    1. Store head in temporary node<br>
+                    2. Move head to next node <br>
+                    3. Free temporary node<br>
                     </b>
                 </div>
 
@@ -323,6 +417,325 @@ free(temp);</b></pre>
 
             <td><b>O(1)</b></td>
         </tr>
+
+
+        <!-- Deletion at End -->
+
+                <tr>
+            <td><b>Deletion (At End)</b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>
+  void deleteEnd()
+{
+    if(head == NULL)
+        return;
+
+    if(head->next == NULL)
+    {
+        free(head);
+        head = NULL;
+        return;
+    }
+
+    struct Node *temp = head;
+
+    while(temp->next->next != NULL)
+        temp = temp->next;
+
+    free(temp->next);
+    temp->next = NULL;
+}
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Traverse until second-last node<br>
+                    2. Store last node<br>
+                    3. Set second-last node's next as NULL<br>
+                    4. Delete last node<br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+
+
+        <!-- Delete at specific position -->
+
+        <tr>
+            <td><b>Deletion (At Specific Position)</b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>
+void deletePosition(int pos)
+{
+    struct Node *temp = head;
+
+    for(int i=1;i < pos-1; i++)
+        temp = temp->next;
+
+    struct Node *del = temp->next;
+
+    temp->next = del->next;
+
+    free(del);
+}
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Traverse to position-1<br>
+                    2. Store node to delete<br>
+                    3. Change links<br>
+                    4. Free deleted node<br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+        
+
+        <!-- Searching a node -->
+
+
+
+                <tr>
+            <td><b>Searching a node </b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>
+void search(int key)
+{
+    struct Node *temp = head;
+    int pos = 1;
+
+    while(temp != NULL)
+    {
+        if(temp->data == key)
+        {
+            printf("Found at position %d", pos);
+            return;
+        }
+
+        temp = temp->next;
+        pos++;
+    }
+
+    printf("Not Found");
+}
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Start from head<br>
+                    2. Compare each node with key<br>
+                    3. If found, return position<br>
+                    4. Otherwise continue<br>
+                    5. If end reached, element not found<br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+
+
+        <!-- Updating -->
+
+
+                <tr>
+            <td><b>Updating a node </b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>
+void update(int oldValue, int newValue)
+{
+    struct Node *temp = head;
+
+    while(temp != NULL)
+    {
+        if(temp->data == oldValue)
+        {
+            temp->data = newValue;
+            return;
+        }
+
+        temp = temp->next;
+    }
+}
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Search required node<br>
+                    2. Replace old value with new value<br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+        
+
+        <!-- Reversing -->
+
+
+                <tr>
+            <td><b>Reversing </b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>
+void reverse()
+{
+    struct Node *prev = NULL;
+    struct Node *current = head;
+    struct Node *next = NULL;
+
+    while(current != NULL)
+    {
+        next = current->next;
+        current->next = prev;
+
+        prev = current;
+        current = next;
+    }
+
+    head = prev;
+}
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Initialize:<br>
+                    prev = NULL<br>
+                    current = head<br>
+                    2. Store next node<br>
+                    3. Reverse Link <br>
+                    4. Move pointers forward <br>
+                    5. Repeat untill end <br>
+                    6. Set head = prev <br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+
+
+        <!-- Counting -->
+
+
+                <tr>
+            <td><b>Count number of nodes </b></td>
+
+            <td>
+
+                <h5>Toggle the switch for viewing Text / Code</h5>
+
+                <label class="switch">
+                    <input type="checkbox" onchange="toggleAlgorithm(this)">
+                    <span class="slider"></span>
+                </label>
+
+                <div class="result codeBox">
+<pre><b>
+int countNodes()
+{
+    int count = 0;
+
+    struct Node *temp = head;
+
+    while(temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+
+    return count;
+}
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Initialize count = 0 <br>
+                    2. Traverse entire list <br>
+                    3. Increment count for each node <br>
+                    4. Print count <br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+        
+
+
+
+
+
+
+
+
 
     </tbody>
 </table>
@@ -342,6 +755,29 @@ function toggleAlgorithm(checkbox) {
         codeBox.classList.remove("hidden");
         textBox.classList.add("hidden");
     }
+}
+
+function searchOperation() {
+
+    let input = document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    let rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+
+        let operation =
+            row.cells[0]
+            .innerText
+            .toLowerCase();
+
+        if(operation.includes(input))
+            row.style.display = "";
+        else
+            row.style.display = "none";
+    });
 }
 </script>
 
