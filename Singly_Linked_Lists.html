@@ -168,6 +168,16 @@ pre {
     margin: 0;
     white-space: pre-wrap;
 }
+
+/* Accordion Design */
+.accordion-container{display:flex;flex-direction:column;gap:10px;}
+details{border:1px solid #ddd;border-radius:8px;overflow:hidden;background:white;}
+summary{cursor:pointer;padding:12px 15px;font-weight:bold;background:#f4f4f4;user-select:none;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:" ▼";float:right;}
+.algo-box summary{background:#e8f5e9;}
+.code-box summary{background:#e3f2fd;}
+
 </style>
 </head>
 
@@ -202,12 +212,6 @@ pre {
         <tr>
             <td><b>Node Structure</b></td>
             <td>
-                <h5>Toggle the switch for viewing Text / Code </h5>
-
-                <label class = "switch">
-                    <input type = "checkbox" onchange="toggleAlgorithm(this)">
-                    <span class = "slider"></span>
-                </label>
                 <div class = "result codeBox">
 <pre><b>
 struct Node
@@ -242,14 +246,24 @@ struct Node *head = NULL;
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Start from head<br>
+                    2. Print node data<br>
+                    3. Move to next node<br>
+                    4. Repeat until NULL<br>
+                    5. Stop
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>void display() {
     struct Node *temp = head;
 
@@ -261,16 +275,9 @@ struct Node *head = NULL;
     printf("NULL");
 }</b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Start from head<br>
-                    2. Print node data<br>
-                    3. Move to next node<br>
-                    4. Repeat until NULL<br>
-                    5. Stop
-                    </b>
-                </div>
 
             </td>
 
@@ -283,14 +290,23 @@ struct Node *head = NULL;
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Create a new node<br>
+                    2. Insert data into the node<br>
+                    3. Set newNode->next = head<br>
+                    4. Update head = newNode<br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>void insertBeginning(int data)
 {
     struct Node *newNode =
@@ -301,15 +317,9 @@ struct Node *head = NULL;
     head = newNode;
 }</b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Create a new node<br>
-                    2. Insert data into the node<br>
-                    3. Set newNode->next = head<br>
-                    4. Update head = newNode<br>
-                    </b>
-                </div>
 
             </td>
 
@@ -322,14 +332,24 @@ struct Node *head = NULL;
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Create a new node<br>
+                    2. Set newNode->next = NULL <br>
+                    3. If list is empty, make it head<br>
+                    4. Traverse to last node<br>
+                    5. Link last node to new node<br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>void insertEnd(int data)
 {
     struct Node *newNode =
@@ -352,16 +372,9 @@ struct Node *head = NULL;
     temp->next = newNode;
 }</b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Create a new node<br>
-                    2. Set newNode->next = NULL <br>
-                    3. If list is empty, make it head<br>
-                    4. Traverse to last node<br>
-                    5. Link last node to new node<br>
-                    </b>
-                </div>
 
             </td>
 
@@ -376,14 +389,23 @@ struct Node *head = NULL;
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Create a new node<br>
+                    2. Traverse to position-1 <br>
+                    3. Set newNode->next = temp->next <br>
+                    4. Set temp->next = newNode <br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>void insertPosition(int data, int pos)
 {
     struct Node *newNode =
@@ -400,15 +422,9 @@ struct Node *head = NULL;
     temp->next = newNode;
 }</b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Create a new node<br>
-                    2. Traverse to position-1 <br>
-                    3. Set newNode->next = temp->next <br>
-                    4. Set temp->next = newNode <br>
-                    </b>
-                </div>
 
             </td>
 
@@ -423,14 +439,22 @@ struct Node *head = NULL;
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Store head in temporary node<br>
+                    2. Move head to next node <br>
+                    3. Free temporary node<br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>
   void deleteBeginning()
 {
@@ -444,14 +468,9 @@ struct Node *head = NULL;
 }
 </b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Store head in temporary node<br>
-                    2. Move head to next node <br>
-                    3. Free temporary node<br>
-                    </b>
-                </div>
 
             </td>
 
@@ -466,14 +485,23 @@ struct Node *head = NULL;
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Traverse until second-last node<br>
+                    2. Store last node<br>
+                    3. Set second-last node's next as NULL<br>
+                    4. Delete last node<br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>
   void deleteEnd()
 {
@@ -497,15 +525,9 @@ struct Node *head = NULL;
 }
 </b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Traverse until second-last node<br>
-                    2. Store last node<br>
-                    3. Set second-last node's next as NULL<br>
-                    4. Delete last node<br>
-                    </b>
-                </div>
 
             </td>
 
@@ -520,14 +542,23 @@ struct Node *head = NULL;
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Traverse to position-1<br>
+                    2. Store node to delete<br>
+                    3. Change links<br>
+                    4. Free deleted node<br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>
 void deletePosition(int pos)
 {
@@ -544,15 +575,9 @@ void deletePosition(int pos)
 }
 </b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Traverse to position-1<br>
-                    2. Store node to delete<br>
-                    3. Change links<br>
-                    4. Free deleted node<br>
-                    </b>
-                </div>
 
             </td>
 
@@ -569,14 +594,24 @@ void deletePosition(int pos)
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Start from head<br>
+                    2. Compare each node with key<br>
+                    3. If found, return position<br>
+                    4. Otherwise continue<br>
+                    5. If end reached, element not found<br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>
 void search(int key)
 {
@@ -599,16 +634,9 @@ void search(int key)
 }
 </b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Start from head<br>
-                    2. Compare each node with key<br>
-                    3. If found, return position<br>
-                    4. Otherwise continue<br>
-                    5. If end reached, element not found<br>
-                    </b>
-                </div>
 
             </td>
 
@@ -624,14 +652,21 @@ void search(int key)
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Search required node<br>
+                    2. Replace old value with new value<br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>
 void update(int oldValue, int newValue)
 {
@@ -650,13 +685,9 @@ void update(int oldValue, int newValue)
 }
 </b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Search required node<br>
-                    2. Replace old value with new value<br>
-                    </b>
-                </div>
 
             </td>
 
@@ -672,14 +703,27 @@ void update(int oldValue, int newValue)
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Initialize:<br>
+                    prev = NULL<br>
+                    current = head<br>
+                    2. Store next node<br>
+                    3. Reverse Link <br>
+                    4. Move pointers forward <br>
+                    5. Repeat untill end <br>
+                    6. Set head = prev <br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>
 void reverse()
 {
@@ -700,19 +744,9 @@ void reverse()
 }
 </b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Initialize:<br>
-                    prev = NULL<br>
-                    current = head<br>
-                    2. Store next node<br>
-                    3. Reverse Link <br>
-                    4. Move pointers forward <br>
-                    5. Repeat untill end <br>
-                    6. Set head = prev <br>
-                    </b>
-                </div>
 
             </td>
 
@@ -728,14 +762,23 @@ void reverse()
 
             <td>
 
-                <h5>Toggle the switch for viewing Text / Code</h5>
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Initialize count = 0 <br>
+                    2. Traverse entire list <br>
+                    3. Increment count for each node <br>
+                    4. Print count <br>
+                    </b>
+                </div>
+</details>
 
-                <label class="switch">
-                    <input type="checkbox" onchange="toggleAlgorithm(this)">
-                    <span class="slider"></span>
-                </label>
-
-                <div class="result codeBox">
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
 <pre><b>
 int countNodes()
 {
@@ -753,15 +796,9 @@ int countNodes()
 }
 </b></pre>
                 </div>
+</details>
+</div>
 
-                <div class="result textBox hidden">
-                    <b>
-                    1. Initialize count = 0 <br>
-                    2. Traverse entire list <br>
-                    3. Increment count for each node <br>
-                    4. Print count <br>
-                    </b>
-                </div>
 
             </td>
 
