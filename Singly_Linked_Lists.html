@@ -196,6 +196,46 @@ pre {
 
     <tbody>
 
+
+        <!-- Node Structure -->
+
+        <tr>
+            <td><b>Node Structure</b></td>
+            <td>
+                <h5>Toggle the switch for viewing Text / Code </h5>
+
+                <label class = "switch">
+                    <input type = "checkbox" onchange="toggleAlgorithm(this)">
+                    <span class = "slider"></span>
+                </label>
+                <div class = "result codeBox">
+<pre><b>
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *head = NULL;
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Create a node<br>
+                    2. Store address of next node in next<br>
+                    3. Initialize next as NULL
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>No Time Complexity</b></td>
+        </tr>
+
+
+        </tr>
+
         <!-- Traversal -->
         <tr>
             <td><b>Traversal</b></td>
