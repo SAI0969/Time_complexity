@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postfix Conversion Using Stack</title>
+
+
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.7;
+    background: #f5f7fa;
+    color: #222;
+}
+h1{
+    text-align:center;
+    margin-bottom:30px;
+
+}
+
+
+
+.section{
+    background:white;
+    padding:20px;
+    margin:15px 0;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+pre{
+    /*padding:15px;
+    overflow-x:auto;
+    border-radius:8px;*/
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    max-width: 100%;
+    font-size: 14px
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+table, th, td{
+    border:1px solid #ccc;
+}
+
+th{
+    background:#1976d2;
+    color:white;
+}
+
+th, td{
+    padding:10px;
+    text-align:center;
+}
+
+ul li{
+    margin-bottom:8px;
+}
+
+.code-title{
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.badge{
+display:inline-block;
+background:#1976d2;
+color:white;
+padding:8px 15px;
+border-radius:20px;
+font-weight:bold;
+margin-bottom:20px;
+}
+details{border:1px solid #ddd;border-radius:8px;overflow:hidden;}
+summary{cursor:pointer;padding:12px;font-weight:bold;background:#e3f2fd;}
+pre{padding:15px;background:#f4f4f4;border-radius:8px;font-family:Consolas,monospace;}
+
+</style>
+</head>
+<body>
+
+<h1>Postfix Conversion Using Stack</h1>
+
+
+<div class="section">
+<h2>Contents</h2>
+<ul>
+<li><a href="#precedence">Postfix Expression</a></li>
+<li><a href="#evaluation">Evaluation</a></li>
+<li><a href="#algorithm">Algorithm</a></li>
+<li><a href="#example1">Example 1</a></li>
+<li><a href="#example2">Example 2</a></li>
+<li><a href="#program">C Program</a></li>
+<li><a href="#complexity">Complexity Analysis</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+<div class="section">
+
+<h2 id='precedence'>Postfix Expression</h2>
+
+<h4>A postfix expression is an expression in which the operator comes after the operands</h1>
+<table>
+<tr>
+<th>Infix</th>
+<th>Postfix</th>
+</tr>
+
+<tr>
+<td><b>A+B</b></td>
+<td><b>AB+</b></td>
+</tr>
+
+<tr>
+<td><b>A-B</b></td>
+<td><b>AB-</td>
+</tr>
+
+<tr>
+<td><b>A*B</b></td>
+<td><b>AB*</b></td>
+</tr>
+
+<tr>
+<td><b>(A+B)*C</b></td>
+<td><b>AB+C*</b></td>
+</tr>
+
+<tr>
+<td><b>A+B*C</b></td>
+<td><b>ABC*+</b></td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+
+<h2 id='evaluation'>Evaluation</h2>
+
+<ol>
+<b>
+<li>Create an empty stack</li>
+
+<li>Scan the expression from left to right</li>
+
+<li>If operator is found:
+<ul>
+<li>Pop two operands</li>
+<li>Perform operation</li>
+<li>Push result back into stack </li>
+</ul>
+</li>
+
+
+<li>Continue untill expression ends</li>
+
+<li>Remaining element in the stack is the final answer</li>
+
+</ol>
+</b>
+</div>
+
+
+<div class="section">
+
+<h2 id='algorithm'>Algorithm</h2>
+
+<ol>
+<b>
+<li>Create an empty stack</li>
+
+<li>Scan the expression from left to right</li>
+
+<li>If symbol is an operand:
+<ul>
+<li>Push into stack</li>
+</ul>
+</li>
+
+
+<li>If symbol is an operator:
+<ul>
+<li>Pop operand2</li>
+<li>Pop operand1</li>
+<li>result = operand1 operator operand2 </li>
+<li>Push result</li>
+</ul>
+</li>
+
+<li>Repeat untill expression ends</li>
+
+<li>Pop final result from stack </li>
+
+<li>Display result</li>
+
+</ol>
+</b>
+</div>
+
+<div class="section">
+
+<h2 id='example1'>Example 1</h2>
+
+<h3>Postfix Expression</h3>
+
+<pre><b>23+</pre>
+
+<h3>Evaluation</h3>
+
+<pre><b>Read 2
+Push 2
+
+Stack:
+2
+
+Read 3
+Push 3
+
+Stack:
+2 3
+
+Read +
+
+Pop 3
+Pop 2
+
+2 + 3 = 5
+
+Push 5
+
+Stack:
+5
+</b>
+</pre>
+
+<h3>Postfix Expression</h3>
+
+<pre><b>5</pre>
+
+</div>
+
+<div class="section">
+
+<h2 id='example1'>Example 2</h2>
+
+<h3>Postfix Expression</h3>
+
+<pre><b>23+5*</pre>
+
+<h3>Evaluation</h3>
+
+<pre><b>Read 2
+Push 2
+
+Stack:
+2
+
+Read 3
+Push 3
+
+Stack:
+2 3
+
+Read +
+
+Pop 3
+Pop 2
+
+2 + 3 = 5
+
+Push 5
+
+Stack:
+5
+
+
+Read 5
+Push 5
+
+Read *
+
+Pop 5
+Pop 5
+
+5 * 5 = 25
+
+Push 25
+
+Stack:25
+</b>
+</pre>
+
+<h3>Postfix Expression</h3>
+
+<pre><b>25</pre>
+
+</div>
+
+<div class="section">
+
+<h2 id='program'>C Program</h2><details open><summary>C Program</summary><pre>
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int stack[100];
+int top = -1;
+
+void push(int value)
+{
+    stack[++top] = value;
+}
+
+int pop()
+{
+    return stack[top--];
+}
+
+int main()
+{
+    char postfix[100];
+
+    printf("Enter Postfix Expression: ");
+    scanf("%s", postfix);
+
+    int i = 0;
+
+    while(postfix[i] != '\0')
+    {
+        char ch = postfix[i];
+
+        if(isdigit(ch))
+        {
+            push(ch - '0');
+        }
+
+        else
+        {
+            int operand2 = pop();
+            int operand1 = pop();
+
+            switch(ch)
+            {
+                case '+':
+                    push(operand1 + operand2);
+                    break;
+
+                case '-':
+                    push(operand1 - operand2);
+                    break;
+
+                case '*':
+                    push(operand1 * operand2);
+                    break;
+
+                case '/':
+                    push(operand1 / operand2);
+                    break;
+            }
+        }
+
+        i++;
+    }
+
+    printf("Result = %d", pop());
+
+    return 0;
+}
+</pre></details></div>
+
+<div class="section">
+
+<h2 id='complexity'>Time Complexity</h2>
+
+<table>
+
+<tr>
+<th>Case</th>
+<th>Complexity</th>
+</tr>
+
+<tr>
+<td>Best Case</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>Average Case</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>Worst Case</td>
+<td>O(n)</td>
+</tr>
+
+</table>
+
+<h3>Space Complexity</h3>
+
+<pre>O(n)</pre>
+
+</div>
+
+
+
+</body>
+</html>
