@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Queue Operations </title>
+
+<style>
+/* Table Styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+#searchBox {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 16px;
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+}
+
+#searchBox:focus {
+    outline: none;
+    box-shadow: 0 0 5px #2196F3;
+}
+/* Mobile Friendly Table */
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Better Code Display */
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    max-width: 100%;
+    font-size: 14px;
+}
+
+/* Content Boxes */
+.result {
+    overflow-x: auto;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .switch {
+        width: 40px;
+        height: 20px;
+    }
+
+    .slider:before {
+        height: 14px;
+        width: 14px;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(20px);
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+    pre {
+        font-size: 12px;
+    }
+}
+
+
+h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#222;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Content Box */
+.result {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-left: 4px solid #2196F3;
+}
+
+.hidden {
+    display: none;
+}
+
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* Accordion Design */
+.accordion-container{display:flex;flex-direction:column;gap:10px;}
+details{border:1px solid #ddd;border-radius:8px;overflow:hidden;background:white;}
+summary{cursor:pointer;padding:12px 15px;font-weight:bold;background:#f4f4f4;user-select:none;list-style:none;}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:" ▼";float:right;}
+.algo-box summary{background:#e8f5e9;}
+.code-box summary{background:#e3f2fd;}
+
+</style>
+</head>
+
+<body>
+
+<h2>Queue Operations</h2>
+
+
+<input
+    type="text"
+    id="searchBox"
+    placeholder="Search operation..."
+    onkeyup="searchOperation()"
+>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Operation</th>
+            <th>Algorithm (Text / Code)</th>
+            <th>Time Complexity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+
+        <!-- Declaration -->
+
+        <tr>
+            <td><b>Declaration</b></td>
+            <td>
+                <div class = "result codeBox">
+<pre><b>
+#define MAX 100
+
+int queue[MAX];
+int front = -1;
+int rear = -1;
+</b></pre>
+                </div>
+
+                <div class="result textBox hidden">
+                    <b>
+                    1. Create an array of size Max<br>
+                    2. Initialise:<br>
+                        front = - 1<br>
+                        rear = -1 <br>
+                    </b>
+                </div>
+
+            </td>
+
+            <td><b>No Time Complexity</b></td>
+        </tr>
+
+
+        </tr>
+
+        <!-- Enqueue -->
+        <tr>
+            <td><b>Enqueue</b></td>
+
+            <td>
+
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Check if queue is full<br>
+                    2. If full, print Overflow<br>
+                    3. If queue is empty :<br>
+                            set front = rear = 0<br>
+                    4. Else:<br>
+                        Increment rear<br>
+                    5. Insert elements at rear<br>
+                    </b>
+                </div>
+</details>
+
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
+<pre><b>void enqueue(int data)
+{
+    if(rear == MAX - 1)
+    {
+        printf("Queue Overflow");
+        return;
+    }
+
+    if(front == -1)
+        front = rear = 0;
+    else
+        rear++;
+
+    queue[rear] = data;
+}</b></pre>
+                </div>
+</details>
+</div>
+
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+
+        <!-- Dequeue -->
+        <tr>
+            <td><b>Dequeue</b></td>
+
+            <td>
+
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Check if queue is empty<br>
+                    2. If empty, print Underflow<br>
+                    3. Store front element<br>
+                    4. If only one element : <br>
+                        Set front = rear = -1<br>
+                    5. Else:<br>
+                        Increment front<br>
+                    6. Return deleted element<br>
+                    </b>
+                </div>
+</details>
+
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
+<pre><b>int dequeue()
+{
+    if(front == -1)
+    {
+        printf("Queue Underflow");
+        return -1;
+    }
+
+    int item = queue[front];
+
+    if(front == rear)
+        front = rear = -1;
+    else
+        front++;
+
+    return item;
+}</b></pre>
+                </div>
+</details>
+</div>
+
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+        
+                <!--Peek-->
+        <tr>
+            <td><b>Peek</b></td>
+
+            <td>
+
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Check whether queue is empty<br>
+                    2. Return front element<br>
+                    </b>
+                </div>
+</details>
+
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
+<pre><b>int peek()
+{
+    if(front == -1)
+    {
+        printf("Queue Empty");
+        return -1;
+    }
+
+    return queue[front];
+}</b></pre>
+                </div>
+</details>
+</div>
+
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+
+
+
+                <!--Display-->
+        <tr>
+            <td><b>Display</b></td>
+
+            <td>
+
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Check if queue is empty<br>
+                    2. Traverse from front to rear<br>
+                    3. Print all elements<br>
+                    </b>
+                </div>
+</details>
+
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
+<pre><b>void display()
+{
+    if(front == -1)
+    {
+        printf("Queue Empty");
+        return;
+    }
+
+    for(int i = front; i <= rear; i++)
+        printf("%d ", queue[i]);
+}</b></pre>
+                </div>
+</details>
+</div>
+
+
+            </td>
+
+            <td><b>O(n)</b></td>
+        </tr>
+        
+        
+
+        <!--isEmpty()-->
+        <tr>
+            <td><b>isEmpty()</b></td>
+
+            <td>
+
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Check whether front = -1<br>
+                    2. If yes, queue is empty<br>
+                    </b>
+                </div>
+</details>
+
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
+<pre><b>int isEmpty()
+{
+    return (front == -1);
+}
+</b></pre>
+                </div>
+</details>
+</div>
+
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+
+
+        <!--isFull()-->
+
+                <tr>
+            <td><b>isFull()</b></td>
+
+            <td>
+
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Check if top = Max - 1<br>
+                    2. If yes, queue is full<br>
+                    </b>
+                </div>
+</details>
+
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
+<pre><b>int isFull()
+{
+    return (rear == MAX - 1);
+}
+</b></pre>
+                </div>
+</details>
+</div>
+
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+
+
+
+                <!--Size-->
+
+                <tr>
+            <td><b>Size</b></td>
+
+            <td>
+
+                
+<div class="accordion-container">
+<details class="algo-box">
+<summary>Algorithm</summary>
+<div class="result">
+                    <b>
+                    1. Check if queue is empty<br>
+                    2. If empty return 0<br>
+                    3. Otherwise calculate :<br>
+                        Size = rear - front + 1<br>
+                    4. Return size<br>
+                    </b>
+                </div>
+</details>
+
+<details class="code-box">
+<summary>Code</summary>
+<div class="result">
+<pre><b>int size()
+{
+    if(front == -1)
+        return 0;
+
+    return rear - front + 1;
+}
+</b></pre>
+                </div>
+</details>
+</div>
+
+
+            </td>
+
+            <td><b>O(1)</b></td>
+        </tr>
+
+
+
+            
+
+    </tbody>
+</table>
+
+<script>
+function toggleAlgorithm(checkbox) {
+
+    const parentCell = checkbox.closest("td");
+
+    const codeBox = parentCell.querySelector(".codeBox");
+    const textBox = parentCell.querySelector(".textBox");
+
+    if (checkbox.checked) {
+        codeBox.classList.add("hidden");
+        textBox.classList.remove("hidden");
+    } else {
+        codeBox.classList.remove("hidden");
+        textBox.classList.add("hidden");
+    }
+}
+
+function searchOperation() {
+
+    let input = document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    let rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+
+        let operation =
+            row.cells[0]
+            .innerText
+            .toLowerCase();
+
+        if(operation.includes(input))
+            row.style.display = "";
+        else
+            row.style.display = "none";
+    });
+}
+</script>
+
+</body>
+</html>
