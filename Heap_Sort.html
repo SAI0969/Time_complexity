@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heap Sort</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:20px;
+}
+
+h2{
+    text-align:center;
+    color:#222;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:12px;
+    vertical-align:top;
+}
+
+th{
+    background:#f4f4f4;
+}
+
+.box{
+    background:#f9f9f9;
+    border-left:4px solid #2196F3;
+    padding:10px;
+}
+
+pre{
+    margin:0;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+
+@media screen and (max-width:768px){
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr{
+        display:block;
+        width:100%;
+    }
+
+    tr{
+        margin-bottom:15px;
+    }
+
+    th{
+        text-align:center;
+    }
+
+    td{
+        border-top:none;
+    }
+
+    pre{
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h2>Heap Sort</h2>
+
+<table>
+
+    <thead>
+        <tr>
+            <th width="35%">Algorithm</th>
+            <th width="55%">Code</th>
+            <th width="10%">Time Complexity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+
+            <td>
+                <div class="box">
+                    <b>
+                    1. Start<br><br>
+
+                    2. Build a max heap from the array<br><br>
+
+                    3. Swap the root (largest element) with the last element<br><br>
+
+                    4. Reduce Heap Size by 1<br><br>
+
+                    5. Heapify the root again<br><br>
+
+                    6. Repeat steps 3 and 5 untill heap size becomes 1<br><br>
+
+                    7. Stop<br><br>
+                    </b>
+                </div>
+            </td>
+
+            <td>
+                <div class="box">
+<pre><code><b>Without Function:<br>
+#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void heapify(int arr[], int n, int i)
+{
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if(left < n && arr[left] > arr[largest])
+        largest = left;
+
+    if(right < n && arr[right] > arr[largest])
+        largest = right;
+
+    if(largest != i)
+    {
+        swap(&arr[i], &arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n)
+{
+    int i;
+
+    // Build max heap
+    for(i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // One by one remove elements
+    for(i = n - 1; i > 0; i--)
+    {
+        swap(&arr[0], &arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+int main()
+{
+    int arr[] = {50, 20, 40, 10, 30};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    heapSort(arr, n);
+
+    printf("Sorted array:\n");
+    for(int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+
+    return 0;
+}
+
+<b>------------------------------------------------------------------------------------------</b>
+With Function: <br>
+
+#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void heapify(int arr[], int n, int i)
+{
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if(left < n && arr[left] > arr[largest])
+        largest = left;
+
+    if(right < n && arr[right] > arr[largest])
+        largest = right;
+
+    if(largest != i)
+    {
+        swap(&arr[i], &arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n)
+{
+    for(int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    for(int i = n - 1; i > 0; i--)
+    {
+        swap(&arr[0], &arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+</b>
+</code></pre>
+                </div>
+            </td>
+
+            <td style="text-align:center;">
+                <b>O(n log n)</b>
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>
