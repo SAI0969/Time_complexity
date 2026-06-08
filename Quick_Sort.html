@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Sort</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:20px;
+}
+
+h2{
+    text-align:center;
+    color:#222;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:12px;
+    vertical-align:top;
+}
+
+th{
+    background:#f4f4f4;
+}
+
+.box{
+    background:#f9f9f9;
+    border-left:4px solid #2196F3;
+    padding:10px;
+}
+
+pre{
+    margin:0;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+
+@media screen and (max-width:768px){
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr{
+        display:block;
+        width:100%;
+    }
+
+    tr{
+        margin-bottom:15px;
+    }
+
+    th{
+        text-align:center;
+    }
+
+    td{
+        border-top:none;
+    }
+
+    pre{
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h2>Quick Sort</h2>
+
+<table>
+
+    <thead>
+        <tr>
+            <th width="35%">Algorithm</th>
+            <th width="55%">Code</th>
+            <th width="10%">Time Complexity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+
+            <td>
+                <div class="box">
+                    <b>
+                    1. Start<br><br>
+
+                    2. Choose a pivot Element<br><br>
+
+                    3. Partition the array:<br><br>
+                        Element less than pivot to the left<br><br>
+                        Element greater than pivot to the right<br><br>
+
+                    4. Recursively apply Quick Sort to the left part<br><br>
+
+                    5. Recursively apply Quick Sort to the right part<br><br>
+
+                    6. Stop<br>
+                    </b>
+                </div>
+            </td>
+
+            <td>
+                <div class="box">
+<pre><code><b>
+#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition(int arr[], int low, int high)
+{
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for(int j = low; j < high; j++)
+    {
+        if(arr[j] < pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
+}
+
+void quickSort(int arr[], int low, int high)
+{
+    if(low < high)
+    {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main()
+{
+    int arr[] = {50, 20, 40, 10, 30};
+    int n = 5;
+
+    quickSort(arr, 0, n - 1);
+
+    printf("Sorted array:\n");
+    for(int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+
+    return 0;
+}
+
+</b>
+</code></pre>
+                </div>
+            </td>
+
+            <td style="text-align:center;">
+                <b>O(n log n)</b>
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>
