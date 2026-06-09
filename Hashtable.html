@@ -1,0 +1,463 @@
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Tables - Open and Closed Hashing</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#222;
+    line-height:1.7;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:30px 0;
+}
+
+h1{
+    text-align:center;
+    color:#0d47a1;
+    margin-bottom:20px;
+}
+
+h2{
+    color:#1565c0;
+    margin-top:35px;
+    margin-bottom:10px;
+}
+
+h3{
+    color:#1976d2;
+    margin-top:25px;
+    margin-bottom:10px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin:20px 0;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+pre{
+    background:#1e1e1e;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:8px;
+    overflow-x:auto;
+    margin-top:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table th{
+    background:#1565c0;
+    color:white;
+    padding:12px;
+}
+
+table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+.highlight{
+    background:#e3f2fd;
+    padding:12px;
+    border-left:5px solid #1565c0;
+    margin-top:10px;
+}
+
+ul{
+    margin-left:20px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:40px;
+    color:#666;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Hash Tables</h1>
+
+<div class="card">
+<h2>What is Hashing?</h2>
+
+<p>
+Hashing is a technique used to store and retrieve data efficiently
+A hash function converts a key into an index of an array
+</p>
+
+<pre>
+Hash Function
+
+h(key) = key % table_size
+
+Example:
+
+Key = 25
+Table Size = 10
+
+h(25) = 25 % 10 = 5
+</pre>
+
+<div class="highlight">
+Store key 25 at index 5
+</div>
+</div>
+
+<div class="card">
+<h2>Collision</h2>
+
+<p>
+A collision occurs when two different keys produce the same hash index
+</p>
+
+<pre>
+25 % 10 = 5
+35 % 10 = 5
+
+Collision Occurs
+</pre>
+</div>
+
+<div class="card">
+<h2>Types of Hashing</h2>
+
+<ul>
+<li>Open Hashing (Separate Chaining)</li>
+<li>Closed Hashing (Open Addressing)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Open Hashing (Separate Chaining)</h2>
+
+<p>
+In Open Hashing, each index stores a linked list
+When a collision occurs, the new element is inserted into the linked list
+</p>
+
+<pre>
+Keys:
+25, 35, 45
+
+Hash Function:
+h(key) = key % 10
+
+25 -> 5
+35 -> 5
+45 -> 5
+</pre>
+
+<pre>
+Index
+
+0
+1
+2
+3
+4
+5 -> 25 -> 35 -> 45
+6
+7
+8
+9
+</pre>
+</div>
+
+<div class="card">
+<h2>Open Hashing Operations</h2>
+
+<h3>Insertion Algorithm</h3>
+
+<pre>
+1. Compute hash index
+2. Create new node
+3. Insert node into linked list
+4. End
+</pre>
+
+<h3>Insertion Code</h3>
+
+<pre>
+void insert(int key)
+{
+    int index = key % SIZE;
+
+    struct Node *newNode =
+    (struct Node*)malloc(sizeof(struct Node));
+
+    newNode->data = key;
+    newNode->next = table[index];
+
+    table[index] = newNode;
+}
+</pre>
+
+<h3>Search Algorithm</h3>
+
+<pre>
+1. Compute hash index
+2. Traverse linked list
+3. Compare each node
+4. Return found/not found
+</pre>
+
+<h3>Search Code</h3>
+
+<pre>
+int search(int key)
+{
+    int index = key % SIZE;
+
+    struct Node *temp = table[index];
+
+    while(temp != NULL)
+    {
+        if(temp->data == key)
+            return 1;
+
+        temp = temp->next;
+    }
+
+    return 0;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>Open Hashing Complexity</h2>
+
+<table>
+<tr>
+<th>Operation</th>
+<th>Best</th>
+<th>Average</th>
+<th>Worst</th>
+</tr>
+
+<tr>
+<td>Insert</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>Search</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>Delete</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Closed Hashing (Open Addressing)</h2>
+
+<p>
+In Closed Hashing, all elements are stored inside the hash table
+When a collision occurs, another free location is searched
+</p>
+
+<h3>Linear Probing Formula</h3>
+
+<pre>
+h(k,i) = (h(k) + i) % size
+</pre>
+
+<h3>Example</h3>
+
+<pre>
+25 -> Index 5
+
+35 -> Collision at 5
+      Place at 6
+
+45 -> Collision at 5
+      Collision at 6
+      Place at 7
+</pre>
+
+<pre>
+0
+1
+2
+3
+4
+5 -> 25
+6 -> 35
+7 -> 45
+8
+9
+</pre>
+</div>
+
+<div class="card">
+<h2>Closed Hashing Operations</h2>
+
+<h3>Insertion Algorithm</h3>
+
+<pre>
+1. Compute hash index
+2. If empty insert
+3. Else probe next slot
+4. Repeat until free slot found
+</pre>
+
+<h3>Insertion Code</h3>
+
+<pre>
+void insert(int key)
+{
+    int index = key % SIZE;
+
+    while(hashTable[index] != -1)
+    {
+        index = (index + 1) % SIZE;
+    }
+
+    hashTable[index] = key;
+}
+</pre>
+
+<h3>Search Algorithm</h3>
+
+<pre>
+1. Compute hash index
+2. Compare current slot
+3. Continue probing
+4. Stop when found
+</pre>
+
+<h3>Search Code</h3>
+
+<pre>
+int search(int key)
+{
+    int index = key % SIZE;
+
+    while(hashTable[index] != -1)
+    {
+        if(hashTable[index] == key)
+            return 1;
+
+        index = (index + 1) % SIZE;
+    }
+
+    return 0;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>Closed Hashing Complexity</h2>
+
+<table>
+<tr>
+<th>Operation</th>
+<th>Best</th>
+<th>Average</th>
+<th>Worst</th>
+</tr>
+
+<tr>
+<td>Insert</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>Search</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>Delete</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Open vs Closed Hashing</h2>
+
+<table>
+<tr>
+<th>Open Hashing</th>
+<th>Closed Hashing</th>
+</tr>
+
+<tr>
+<td>Uses Linked Lists</td>
+<td>Uses Array Only</td>
+</tr>
+
+<tr>
+<td>Separate Chaining</td>
+<td>Open Addressing</td>
+</tr>
+
+<tr>
+<td>Extra Memory Needed</td>
+<td>No Extra Memory</td>
+</tr>
+
+<tr>
+<td>Easier Deletion</td>
+<td>Complex Deletion</td>
+</tr>
+
+<tr>
+<td>Less Clustering</td>
+<td>More Clustering</td>
+</tr>
+</table>
+</div>
+
+
+
+</div>
+
+</body>
+</html>
+
+
