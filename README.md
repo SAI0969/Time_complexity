@@ -27,9 +27,6 @@ A comprehensive, interactive web-based resource for learning and understanding *
 - **Binary Tree** - Hierarchical structure with tree traversals (Inorder, Preorder, Postorder)
 - **Binary Search Tree** - Ordered binary tree optimized for searching and insertion
 
-###  Graphs
-- **Graph Algorithms** - DFS, BFS, and Dijkstra's Shortest Path implementations
-
 ###  Searching
 - **Linear Search** - O(n) sequential search
 - **Binary Search** - O(log n) divide-and-conquer search
