@@ -8,7 +8,6 @@ A comprehensive, interactive web-based resource for learning and understanding *
 - **Data Structures**: Linked Lists, Stacks, Queues, Trees, Hash Tables
 - **Algorithms**: Searching, Sorting, Graph Traversal
 - **Time & Space Complexity Analysis**: Big-O notation for each operation
-- **Real-world Applications**: Understanding when and why to use each structure/algorithm
 
 ##  What's Inside
 
@@ -58,13 +57,6 @@ A comprehensive, interactive web-based resource for learning and understanding *
    - Click on any algorithm or data structure card
    - Expand collapsible sections to see detailed time complexity analysis
 
-##  How to Use
-
-- **For Students**: Use as a study guide and quick reference for algorithms and data structures
-- **For Interview Prep**: Review time complexities and algorithm characteristics before technical interviews
-- **For Educators**: Share with students as an interactive learning resource
-- **For Reference**: Quick lookup of Big-O complexity for common operations
-
 ##  Complexity At a Glance
 
 ### Common Time Complexities (Fastest to Slowest)
@@ -109,20 +101,5 @@ Time_complexity/
 └── README.md
 ```
 
-##  Use Cases
-
--  **Computer Science Students** learning DSA
-
-##  Contributing
-
-Contributions are welcome! Feel free to:
-- Add new algorithms or data structures
-- Improve explanations and examples
-- Report issues or suggest enhancements
-- Enhance UI/UX design
-
-##  License
-
-This project is open-source and available for educational purposes.
 
 
