@@ -54,7 +54,7 @@ A comprehensive, interactive web-based resource for learning and understanding *
 
 2. **Open in Browser**
    - Simply open `index.html` in any modern web browser
-   - Or visit the live site via [GitHub Pages](https://github.com/SAI0969/Time_complexity)
+   - Or visit the live site via [GitHub Pages](https://sai0969.github.io/Time_complexity/)
 
 3. **Explore Topics**
    - Navigate through topics from the main index
