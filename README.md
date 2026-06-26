@@ -1,8 +1,8 @@
-# 🚀 AlgoInsight - Algorithms & Time Complexity
+#  AlgoInsight - Algorithms & Time Complexity
 
 A comprehensive, interactive web-based resource for learning and understanding **algorithms, data structures, and their time complexity** analysis. Perfect for students, educators, and developers preparing for technical interviews or deepening their computer science fundamentals.
 
-## ✨ Overview
+##  Overview
 
 **AlgoInsight** provides visual, interactive learning experiences for fundamental computer science concepts including:
 - **Data Structures**: Linked Lists, Stacks, Queues, Trees, Hash Tables
@@ -10,50 +10,41 @@ A comprehensive, interactive web-based resource for learning and understanding *
 - **Time & Space Complexity Analysis**: Big-O notation for each operation
 - **Real-world Applications**: Understanding when and why to use each structure/algorithm
 
-## 📚 What's Inside
+##  What's Inside
 
-### 🔗 Linked Lists
+###  Linked Lists
 - **Singly Linked List** - Linear traversal with forward pointers
 - **Doubly Linked List** - Bidirectional traversal with forward and backward pointers
 - **Circular Linked List** - Connected loop structure for efficient cyclic operations
 
-### 📦 Stack & Queue
+###  Stack & Queue
 - **Stack** - LIFO (Last-In-First-Out) structure with Push/Pop operations
 - **Queue** - FIFO (First-In-First-Out) structure with Enqueue/Dequeue operations
 - **Infix → Postfix Conversion** - Expression notation conversion
 - **Postfix Evaluation** - Evaluate mathematical expressions using stacks
 
-### 🌳 Trees
+###  Trees
 - **Binary Tree** - Hierarchical structure with tree traversals (Inorder, Preorder, Postorder)
 - **Binary Search Tree** - Ordered binary tree optimized for searching and insertion
 
-### 📊 Graphs
+###  Graphs
 - **Graph Algorithms** - DFS, BFS, and Dijkstra's Shortest Path implementations
 
-### 🔍 Searching
+###  Searching
 - **Linear Search** - O(n) sequential search
 - **Binary Search** - O(log n) divide-and-conquer search
 
-### ⚡ Sorting
+###  Sorting
 - **Insertion Sort** - O(n²) simple comparison-based sorting
 - **Quick Sort** - O(n log n) average-case divide-and-conquer sorting
 - **Merge Sort** - O(n log n) guaranteed divide-and-conquer sorting
 - **Heap Sort** - O(n log n) heap-based sorting
 
-### 🗝️ Hashing
+###  Hashing
 - **Hash Table** - Efficient key-value storage with Open and Closed Hashing techniques
 
-## 🎯 Key Features
 
-✅ **Interactive Learning** - Collapsible sections for detailed algorithm analysis  
-✅ **Time Complexity Analysis** - Big-O notation for best, average, and worst cases  
-✅ **Space Complexity Breakdown** - Memory usage patterns  
-✅ **Real Examples** - Step-by-step walkthroughs of operations  
-✅ **Responsive Design** - Mobile-friendly interface  
-✅ **Visual Cards** - Easy-to-navigate grid layout  
-✅ **No Dependencies** - Pure HTML/CSS for fast loading  
-
-## 🚀 Getting Started
+##  Getting Started
 
 1. **Clone the Repository**
    ```bash
@@ -70,14 +61,14 @@ A comprehensive, interactive web-based resource for learning and understanding *
    - Click on any algorithm or data structure card
    - Expand collapsible sections to see detailed time complexity analysis
 
-## 📖 How to Use
+##  How to Use
 
 - **For Students**: Use as a study guide and quick reference for algorithms and data structures
 - **For Interview Prep**: Review time complexities and algorithm characteristics before technical interviews
 - **For Educators**: Share with students as an interactive learning resource
 - **For Reference**: Quick lookup of Big-O complexity for common operations
 
-## 🎓 Complexity At a Glance
+##  Complexity At a Glance
 
 ### Common Time Complexities (Fastest to Slowest)
 | Notation | Name | Example |
@@ -91,13 +82,13 @@ A comprehensive, interactive web-based resource for learning and understanding *
 | **O(2ⁿ)** | Exponential | Recursive fibonacci |
 | **O(n!)** | Factorial | Generating permutations |
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **HTML5** - Semantic markup and structure
 - **CSS3** - Modern styling with flexbox and animations
 - **Vanilla JavaScript** - Interactive collapsible sections (no frameworks required!)
 
-## 📋 File Structure
+##  File Structure
 
 ```
 Time_complexity/
@@ -121,15 +112,11 @@ Time_complexity/
 └── README.md
 ```
 
-## 💡 Use Cases
+##  Use Cases
 
-- 📚 **Computer Science Students** learning DSA
-- 👨‍💼 **Interview Candidates** preparing for coding rounds
-- 🏫 **Educators** teaching algorithms and data structures
-- 👨‍💻 **Developers** needing quick complexity references
-- 📊 **Algorithm Enthusiasts** exploring computational complexity
+-  **Computer Science Students** learning DSA
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Feel free to:
 - Add new algorithms or data structures
@@ -137,22 +124,8 @@ Contributions are welcome! Feel free to:
 - Report issues or suggest enhancements
 - Enhance UI/UX design
 
-## 📄 License
+##  License
 
 This project is open-source and available for educational purposes.
 
-## ⭐ Support
 
-If you find this resource helpful, please consider:
-- ⭐ Starring this repository
-- 🔗 Sharing it with others
-- 💬 Providing feedback and suggestions
-- 🐛 Reporting bugs or improvements
-
-## 📞 Contact
-
-For questions or suggestions, feel free to open an issue or reach out!
-
----
-
-**Happy Learning! Master algorithms and complexity analysis with AlgoInsight.** 🎓✨
