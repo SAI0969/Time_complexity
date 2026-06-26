@@ -179,6 +179,68 @@ summary::after{content:" ▼";float:right;}
 .algo-box summary{background:#e8f5e9;}
 .code-box summary{background:#e3f2fd;}
 
+
+
+/* From Uiverse.io by joe-watson-sbf */ 
+.flip-card {
+  background-color: transparent;
+  width: 500px;
+  height: 350px;
+  perspective: 1000px;
+  font-family: sans-serif;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: absolute;
+  transition: transform 0s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid coral;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
+     rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
+  color: coral;
+}
+
+.flip-card-back {
+  background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
+     bisque 40%, rgb(255, 185, 160) 78%);
+  color: black;
+  transform: rotateY(180deg);
+}
+
+
+
+</style>
+
 </style>
 </head>
 
@@ -270,10 +332,11 @@ summary::after{content:" ▼";float:right;}
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Allocate memory for node<br>
                     2. Store data<br>
@@ -284,9 +347,8 @@ summary::after{content:" ▼";float:right;}
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>struct Node* createNode(int data)
 {
     struct Node *newNode =
@@ -315,10 +377,11 @@ summary::after{content:" ▼";float:right;}
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. If tree is empty, Create a node<br>
                     2. If Data < Root, insert in the left subtree<br>
@@ -328,9 +391,8 @@ summary::after{content:" ▼";float:right;}
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>struct Node* insert(struct Node *root, int data)
 {
     if(root == NULL)
@@ -361,10 +423,11 @@ summary::after{content:" ▼";float:right;}
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Compare key with root<br>
                     2. If equal then print found<br>
@@ -375,9 +438,8 @@ summary::after{content:" ▼";float:right;}
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>struct Node* search(struct Node *root, int key)
 {
     if(root == NULL || root->data == key)
@@ -408,10 +470,11 @@ summary::after{content:" ▼";float:right;}
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Traverse Left Subtree<br>
                     2. Visit Root<br>
@@ -420,9 +483,8 @@ summary::after{content:" ▼";float:right;}
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void inorder(struct Node *root)
 {
     if(root != NULL)
@@ -456,10 +518,11 @@ summary::after{content:" ▼";float:right;}
             
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. First visit Root<br>
                     2. Traverse Left Subtree<br>
@@ -468,9 +531,8 @@ summary::after{content:" ▼";float:right;}
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void preorder(struct Node *root)
 {
     if(root != NULL)
@@ -501,10 +563,11 @@ summary::after{content:" ▼";float:right;}
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Traverse Left Subtree<br>
                     2. Traverse Right Subtree<br>
@@ -513,9 +576,8 @@ summary::after{content:" ▼";float:right;}
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void postorder(struct Node *root)
 {
     if(root != NULL)
@@ -547,22 +609,22 @@ summary::after{content:" ▼";float:right;}
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. If you want to delete Leaf Node, Delete directly<br>
-                    2. If you want to delete One Child, Replace node with child<br>
-                    3. If you want to delete Two Children, Replace with inorder successor and Delete successor<br>
+                    2. If you want to delete One Child,Replace node with child<br>
+                    3. If you want to delete Two Children, Replace with <br>inorder successor and Delete successor<br>
 
                     </b>
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>struct Node* deleteNode(struct Node *root, int key)
 {
     if(root == NULL)
