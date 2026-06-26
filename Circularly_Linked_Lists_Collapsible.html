@@ -178,6 +178,65 @@ summary::after{content:" ▼";float:right;}
 .algo-box summary{background:#e8f5e9;}
 .code-box summary{background:#e3f2fd;}
 
+
+/* From Uiverse.io by joe-watson-sbf */ 
+.flip-card {
+  background-color: transparent;
+  width: 500px;
+  height: 350px;
+  perspective: 1000px;
+  font-family: sans-serif;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: absolute;
+  transition: transform 0s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid coral;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
+     rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
+  color: coral;
+}
+
+.flip-card-back {
+  background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
+     bisque 40%, rgb(255, 185, 160) 78%);
+  color: black;
+  transform: rotateY(180deg);
+}
+
+
+
 </style>
 </head>
 
@@ -246,10 +305,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Start from head<br>
                     2. Print node <br>
@@ -259,9 +319,8 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void display()
 {
     if(head == NULL)
@@ -296,10 +355,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Create a new node<br>
                     2. If list is empty:<br>
@@ -314,32 +374,25 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void insertBeginning(int data)
 {
     struct Node *newNode =
         (struct Node*)malloc(sizeof(struct Node));
-
     newNode->data = data;
-
     if(head == NULL)
     {
         newNode->next = newNode;
         head = newNode;
         return;
     }
-
     struct Node *temp = head;
-
     while(temp->next != head)
         temp = temp->next;
-
     newNode->next = head;
     temp->next = newNode;
-    head = newNode;
-}</b></pre>
+    head = newNode;}</b></pre>
                 </div>
 </details>
 </div>
@@ -357,10 +410,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Create a new node<br>
                     2. If list empty:<br>
@@ -373,28 +427,22 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void insertEnd(int data)
 {
     struct Node *newNode =
         (struct Node*)malloc(sizeof(struct Node));
-
     newNode->data = data;
-
     if(head == NULL)
     {
         newNode->next = newNode;
         head = newNode;
         return;
     }
-
     struct Node *temp = head;
-
     while(temp->next != head)
         temp = temp->next;
-
     temp->next = newNode;
     newNode->next = head;
 }</b></pre>
@@ -417,10 +465,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Create a new node<br>
                     2. Traverse to position-1 <br>
@@ -430,9 +479,8 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void insertPosition(int data, int pos)
 {
     struct Node *newNode =
@@ -467,10 +515,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. If only one node:<br>
                         Delete node<br>
@@ -483,32 +532,25 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void deleteBeginning()
 {
     if(head == NULL)
         return;
-
     if(head->next == head)
     {
         free(head);
         head = NULL;
         return;
     }
-
     struct Node *temp = head;
     struct Node *last = head;
-
     while(last->next != head)
         last = last->next;
-
     head = head->next;
     last->next = head;
-
-    free(temp);
-}
+    free(temp);}
 </b></pre>
                 </div>
 </details>
@@ -529,10 +571,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Traverse to last node<br>
                     2. Move to previous node<br>
@@ -542,28 +585,22 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void deleteEnd()
 {
     if(head == NULL)
         return;
-
     if(head->next == head)
     {
         free(head);
         head = NULL;
         return;
     }
-
     struct Node *temp = head;
-
     while(temp->next->next != head)
         temp = temp->next;
-
     free(temp->next);
-
     temp->next = head;
 }
 </b></pre>
@@ -586,10 +623,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Traverse to position-1 <br>
                     2. Store node to delete<br>
@@ -599,9 +637,8 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void deletePosition(int pos)
 {
     struct Node *temp = head;
@@ -637,10 +674,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Start from head<br>
                     2. Compare each node with key<br>
@@ -651,30 +689,23 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void search(int key)
 {
     if(head == NULL)
         return;
-
     struct Node *temp = head;
     int pos = 1;
-
     do
-    {
-        if(temp->data == key)
-        {
-            printf("Found at Position %d", pos);
+    {   if(temp->data == key)
+        {   printf("Found at Position %d", pos);
             return;
         }
-
         temp = temp->next;
         pos++;
     }
     while(temp != head);
-
     printf("Not Found");
 }
 </b></pre>
@@ -698,10 +729,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Traverse list<br>
                     2. Find old value<br>
@@ -710,16 +742,13 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void update(int oldValue, int newValue)
 {
     if(head == NULL)
         return;
-
     struct Node *temp = head;
-
     do
     {
         if(temp->data == oldValue)
@@ -727,7 +756,6 @@ struct Node *head = NULL;
             temp->data = newValue;
             return;
         }
-
         temp = temp->next;
     }
     while(temp != head);
@@ -753,10 +781,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Initialise:<br>
                         prev = NULL<br>
@@ -768,31 +797,25 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>void reverse()
 {
     if(head == NULL || head->next == head)
         return;
-
     struct Node *prev = NULL;
     struct Node *current = head;
     struct Node *nextNode;
-
     do
     {
         nextNode = current->next;
         current->next = prev;
-
         prev = current;
         current = nextNode;
     }
     while(current != head);
-
     head->next = prev;
-    head = prev;
-}
+    head = prev;    }
 </b></pre>
                 </div>
 </details>
@@ -814,10 +837,11 @@ struct Node *head = NULL;
             <td>
 
                 
-<div class="accordion-container">
-<details class="algo-box">
-<summary>Algorithm</summary>
-<div class="result">
+  <div class="flip-card">
+  <div class="flip-card-inner">
+    
+    <div class="flip-card-front">
+      <h3>Algorithm</h3>               
                     <b>
                     1. Initialize count = 0 <br>
                     2. Traverse once around the circle <br>
@@ -827,9 +851,8 @@ struct Node *head = NULL;
                 </div>
 </details>
 
-<details class="code-box">
-<summary>Code</summary>
-<div class="result">
+    <div class="flip-card-back">
+  <h3>Code</h3>
 <pre><b>int countNodes()
 {
     if(head == NULL)
